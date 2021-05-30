@@ -7,6 +7,7 @@ It is a simple address book. It allows one to save a list of address to the bloc
 ## HotelRoom Smart Contract
 The sample solidity hotel contract below allows one to rent a hotel room. It allows someone to make a payment for a room if the room is vacant. Once payment is made to the contract the funds are sent to the owner. This could be expanded to unlock the door or dispense a key code after payment is made. 
 Features:
+* Introduced a tenant address, so that vacating a room becomes possible
 * Only the owner or current tenat can vacate the room
 * The hotel room rent can be adjusted and is not a static value
 * Only the owner can change the rent
