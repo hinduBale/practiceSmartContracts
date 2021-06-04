@@ -32,7 +32,23 @@ Also, note that, **call in combination with re-entrancy guard is the recommended
 * The `call` method is susceptible to the *re-entry attack*. However, call in combination with re-entrancy guard is the recommended method to use after December 2019.
 * In contracts, where you are sending payment using `call` or anyhow interacting with external contracts, Use the **Checks-Effects-Interactions Pattern**.
 
+## Handy Solidity quirks I came across:
+
+* When declaring function that returns something, you have the following two choices:
 
 
+`return` variable is directly declared inside the function:
+```solidity
+  function addTwoNumbers(uint a, uint b) public returns (uint) {
+    uint result = a + b;
+    return result;
+  }
+```
+Against something like:
+```solidity
+  function addTwoNumbers(uint a, uint b) public returns (uint result) {
+    result = a + b;
+  }
+```
 
 
