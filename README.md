@@ -50,5 +50,16 @@ Against something like:
     result = a + b;
   }
 ```
-
+* Code to determine whether another address is a contract or not (not entirely safe)
+* The assembly language that all Ethereum contracts compile down to contains an opcode for this precise operation: EXTCODESIZE. This opcode returns the size of the code on an address. If the size is larger than zero, the address is a contract. But you need to write assembly code within the contract to access this opcode since the Solidity compiler does not support it directly at the moment. 
+* `EXTCODESIZE` returns 0 if it is called from the constructor of a contract, because it is basically not yet deployed. So if you are using this in a security sensitive setting, you would have to consider if this is a problem.
+```solidity
+function isContract(address _addr) private returns (bool isContract) {
+  uint size;
+  assembly {
+    size := extcodesize(_addr)
+  }
+  return (size > 0)
+}
+```
 
